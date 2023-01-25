@@ -14,7 +14,7 @@ body {
 /* clamp is a CSS function that allows for sizing an element within provided bounds */
 /* clamp takes 3 values - min, val, max - and is interpreted as MAX(min, MIN(val, max)) */
 .menu-items {
-   margin-left: clamp(4rem, 20vw, 48rem);
+   margin-left: clamp(5rem, 22.5vw, 40rem);
    position: relative;
    z-index: 2;
 }
@@ -22,7 +22,7 @@ body {
 .menu-item {
    color: white;
    font-size: clamp(3rem, 8vw, 8rem);
-   font-family: "Ibarra Real Nova", serif;
+   font-family: "Shadows Into Light", cursive;
    display: block;
    text-decoration: none;
    padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
@@ -37,22 +37,29 @@ body {
 }
 
 /* vmin is 1% of the smaller viewport dimension */
-#menu-background-pattern {
+#menu-background-pattern, #menu-background-pattern2 {
    height: 100vh;
    width: 100vw;
-   background-image: radial-gradient(rgba(255,255,255,0.1) 9%, transparent 9%);
+   background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn0.iconfinder.com%2Fdata%2Ficons%2Fsummer-recreation-glyph-black%2F2048%2FSurfing_board-512.png&f=1&nofb=1&ipt=37db8089bf1587167cbee068e0320c58860c691f5df16022f1a3ce66436f1b6c&ipo=images");
    background-position: 0% 0%;
-   background-size: 12vmin 12vmin;
+   background-size: 10vmin 10vmin;
+   background-repeat: repeat-y;
    position: absolute;
    left: 0;
    top: 0;
    z-index: 1;
+   opacity: .75;
    /* this could be accomplished with 'all 800ms ease' */
-   transition: opacity 800ms ease, background-size 800ms ease, background-position 800ms ease;
+   /* transition: opacity 800ms ease, background-size 800ms ease, background-position 800ms ease; */
+   transition: all 800ms ease;
 }
 
-.menu-items:hover ~ #menu-background-pattern {
-   background-size: 11vmin 11vmin;
+#menu-background-pattern2 {
+   background-position: 5% 25%;
+}
+
+.menu-items:hover ~ #menu-background-pattern, .menu-items:hover ~ #menu-background-pattern2 {
+   background-size: 5vmin 5vmin;
    opacity: 0.5;
 }
 
@@ -60,16 +67,32 @@ body {
    background-position: 0% -25%;
 }
 
+#menu[data-active-index="0"] > #menu-background-pattern2 {
+   background-position: 5% 25%;
+}
+
 #menu[data-active-index="1"] > #menu-background-pattern {
    background-position: 0% -50%;
+}
+
+#menu[data-active-index="1"] > #menu-background-pattern2 {
+   background-position: 5% 50%;
 }
 
 #menu[data-active-index="2"] > #menu-background-pattern {
    background-position: 0% -75%;
 }
 
+#menu[data-active-index="2"] > #menu-background-pattern2 {
+   background-position: 5% 75%;
+}
+
 #menu[data-active-index="3"] > #menu-background-pattern {
    background-position: 0% -100%;
+}
+
+#menu[data-active-index="3"] > #menu-background-pattern2 {
+   background-position: 5% 100%;
 }
 
 #menu-background-image {
@@ -82,7 +105,7 @@ body {
    z-index: 0;
    background-position: center 0%;
    background-size: 110vmax;
-   opacity: 0.20;
+   opacity: 0.25;
    transition: opacity 800ms ease, background-size 800ms ease, background-position 800ms ease;
 }
 
@@ -92,17 +115,17 @@ body {
 }
 
 #menu[data-active-index="0"] > #menu-background-image {
-   background-position: 0% 45%;
+   background-position: 0% 20%;
 }
 
 #menu[data-active-index="1"] > #menu-background-image {
-   background-position: 0% 50%;
+   background-position: 0% 30%;
 }
 
 #menu[data-active-index="2"] > #menu-background-image {
-   background-position: 0% 55%;
+   background-position: 0% 40%;
 }
 
 #menu[data-active-index="3"] > #menu-background-image {
-   background-position: 0% 60%;
+   background-position: 0% 50%;
 }
